@@ -1,0 +1,100 @@
+# 🔘 Arduino UNO LED Control Using Push Button and INPUT_PULLUP
+
+## **📌 Project Overview**
+
+This project demonstrates how to control the built-in LED of an Arduino UNO using a push button and the internal pull-up resistor. The `INPUT_PULLUP` mode eliminates the need for an external pull-up resistor. The LED turns ON when the button is pressed and turns OFF when the button is released.
+
+## **🎯 Objectives**
+
+* Understand digital input and output pins.
+* Learn push-button interfacing with Arduino UNO.
+* Understand the `INPUT_PULLUP` mode.
+* Control an LED based on button input.
+* Gain practical knowledge of embedded systems programming.
+
+## **🛠️ Components Required**
+
+| Component    |    Quantity |
+| ------------ | ----------: |
+| Arduino UNO  |           1 |
+| Push button  |           1 |
+| USB cable    |           1 |
+| Breadboard   |           1 |
+| Jumper wires | As required |
+
+*Note: This version uses the Arduino's built-in LED and internal pull-up resistor, so no external LED or pull-up resistor is required.*
+
+## **🔌 Circuit Connections**
+
+**Push Button Connections**
+
+* Connect one terminal of the push button to digital pin 2.
+* Connect the other terminal to GND.
+* No external pull-up resistor is needed because `INPUT_PULLUP` enables the internal resistor.
+
+**Built-in LED**
+
+* The built-in LED is controlled through `LED_BUILTIN`.
+* No external LED wiring is required.
+
+## **💻 Arduino Source Code**
+
+```cpp
+const int buttonPin = 2;
+const int ledPin = LED_BUILTIN;
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  int buttonState = digitalRead(buttonPin);
+
+  if (buttonState == LOW) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+}
+```
+
+## **⚙️ Working Principle**
+
+1. The Arduino configures digital pin 2 as an input with the internal pull-up resistor enabled.
+2. When the button is released, the input reads `HIGH`.
+3. When the button is pressed, the input reads `LOW` because it is connected to GND.
+4. The Arduino checks the button state using `digitalRead()`.
+5. The built-in LED turns ON while the button is pressed and OFF when it is released.
+
+## **✅ Expected Output**
+
+* **Button released:** LED OFF.
+* **Button pressed:** LED ON.
+* **Button released again:** LED OFF.
+
+## **📚 Concepts Learned**
+
+* Digital input/output (GPIO).
+* Internal pull-up resistors.
+* Push-button interfacing.
+* `pinMode()`, `digitalRead()`, and `digitalWrite()`.
+* Conditional statements (`if` and `else`).
+* Embedded systems programming.
+
+## **🚀 Future Improvements**
+
+* Toggle the LED state with each button press.
+* Control multiple LEDs using a push button.
+* Implement software debouncing.
+* Use a push button to control other output devices.
+
+## **🏁 Conclusion**
+
+This project demonstrates how to use the Arduino UNO's internal pull-up resistor to read a push-button input and control the built-in LED. It provides a foundation for learning digital electronics, microcontroller programming, and embedded systems.
+
+## **🔖 Technologies Used**
+
+* **Hardware:** Arduino UNO.
+* **Software:** Arduino IDE.
+* **Programming Language:** Arduino C/C++.
